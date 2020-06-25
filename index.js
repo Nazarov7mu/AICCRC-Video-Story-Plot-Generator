@@ -154,7 +154,7 @@ function backToEditorHandler() {
 function storyEditHandler() {
 	document.getElementById("btn-home").style.display = "";
 
-    document.getElementById("video-story-plot-auto-generator").innerHTML = "";
+    document.getElementById("story-plot").innerHTML = "";
 	document.getElementById("video-story-plot-auto-generator").style.display = "none";
 	document.getElementById("btn-check-result").disabled = false;
 	document.getElementById("btn-check-result").setAttribute("class", "btn btn-primary col-lg-12 col-md-12 col-sm-12");
