@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset='utf-8'>
+      <title>AICCRC conflict graph</title>
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel='stylesheet' href='./css/bootstrap.min.css'/>
+      <link rel='stylesheet' href='./css/bootstrap.scrollbar.css'/>
+      <link href='./css/metadata_view.css' rel='stylesheet' type='text/css'>
+      <!-- http://youngkang.me/hangul-webfont-showcase/#/fonts/Godo -->
+      <link href='./font/Godo.css' rel='stylesheet' type='text/css'>
+      <!-- http://youngkang.me/hangul-webfont-showcase/#/fonts/NanumBarunGothic -->
+      <link href='./font/NanumBarunGothic.css' rel='stylesheet' type='text/css'>
+      <script src='js/jquery-3.3.1.min.js'></script>
+      <script src='js/bootstrap.bundle.min.js'></script>
+      <style>
+         .container{
+         margin: auto;
+         }
+         canvas{
+         -moz-user-select: none;
+         -webkit-user-select: none;
+         -ms-user-select: none;
+         }
+         .sceneimgsheader{
+         float: left;
+         box-sizing: border-box;
+         margin: 0 2px;
+         }
+         .sceneimgsdiv{
+         overflow-y: auto;
+         overflow-x: hidden;
+         padding: 5px 0;
+         /* border: 1px solid rgb(119, 125, 129); */
+         box-sizing: border-box;
+         /* height: 800px; */
+         max-height: 800px;
+         /* background-color: white; */
+         color:rgb(119, 125, 129)
+         }
+         #loading{
+         opacity: 0.8;
+         position: absolute;
+         z-index: 1;
+         padding: 0;
+         margin: 0;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: black;
+         }
+         .loadingcenter{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         color:white;
+         }
+         .mysearch{
+         margin: 0 auto;
+         display: flex;
+         justify-content: center; 
+         }
+         #btn-play{
+         visibility: hidden;
+         }
+      </style>
+   </head>
+   <body>
+      <header class="row main-header py-4" id="main-header">
+         <div class="col-lg-1 col-md-0"></div>
+         <div class="col-lg-6 col-md-12 text-center pt-2 mt-1">
+            <h1 id="header-title">Header</h1>
+         </div>
+         <div class="col-lg-3 col-md-12 text-center">
+            <img id="aiccrc-itrc-logo" src="./img/center_logo.png">
+         </div>
+         <div class="col-lg-2 col-md-0"></div>
+      </header>
+      <section class="container">
+         <div id="loading" class="loading"></div>
+         <nav class="mysearch row main-search py-3" style='width:100%; margin:auto;'>
+            <!-- Dropdown -->
+            <div class="dropdown" style='margin-right: 5px;'>
+               <button id='storytemplatebtn' class="btn btn-primary dropdown-toggle form-control py-2" type="button" style='background-color:rgb(0,101,179);color:rgb(255,255,255);' data-toggle="dropdown"> Dropdown01 <span class="caret"></span></button>
+               <ul class="dropdown-menu" style="min-width:120px">
+                  <li><a class="dropdown-item storyitem" style='text-align: center;'>Item01</a></li>
+                  <li><a class="dropdown-item storyitem" style='text-align: center;'>Item02</a></li>
+                  <li><a class="dropdown-item storyitem" style='text-align: center;'>Item03</a></li>
+               </ul>
+            </div>
+            <!-- Input tag -->
+            <div class=""  style='margin-right: 5px;'>
+               <input type="search" class="form-control py-2"  size='30' placeholder="Input Tag02" name='conflict_degrees' id='conflict_degrees'>   <!-- value="이름=장그래" -->
+            </div>
+            <div class="col-lg-1 col-md-2 col-4 px-1">
+               <!-- BTN -->
+               <button class="form-control py-2 btn-search" id="btn-search">BTN01</button>
+            </div>
+         </nav>
+      </section>
+      <footer class="row main-footer pt-4 pb-3 fixed-bottom">
+         <div class="col-12 text-center">
+            <h6 class="my-1">(22212) 인천광역시 남구 인하로 100 인하대학교 하이테크 201호 / 032-860-8811 / 032-873-8817</h6>
+            <h6 class="my-1">Copyright © 2019 - ITRC. All rights reserved. </h6>
+            <h6 class="my-1">본 영상의 저작권은 tvN에 귀속되어 있습니다. </h6>
+         </div>
+      </footer>
+      <div id="topbutton" class="topbutton"><a href="#main-header">▲ Top</a></div>
+   </body>
+</html>

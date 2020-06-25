@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/ai_py3.6_tf1.2/lib/python3.6/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/root/anaconda3/envs/ai_py3.6_tf1.2/lib/python3.6/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/root/anaconda3/envs/ai_py3.6_tf1.2/lib/python3.6/http/server.py", line 1211, in <module>
+    test(HandlerClass=handler_class, port=args.port, bind=args.bind)
+  File "/root/anaconda3/envs/ai_py3.6_tf1.2/lib/python3.6/http/server.py", line 1185, in test
+    with ServerClass(server_address, HandlerClass) as httpd:
+  File "/root/anaconda3/envs/ai_py3.6_tf1.2/lib/python3.6/socketserver.py", line 453, in __init__
+    self.server_bind()
+  File "/root/anaconda3/envs/ai_py3.6_tf1.2/lib/python3.6/http/server.py", line 136, in server_bind
+    socketserver.TCPServer.server_bind(self)
+  File "/root/anaconda3/envs/ai_py3.6_tf1.2/lib/python3.6/socketserver.py", line 467, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use

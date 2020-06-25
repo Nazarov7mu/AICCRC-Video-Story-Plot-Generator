@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset='utf-8'>
+      <title>AICCRC conflict graph</title>
+      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel='stylesheet' href='./css/bootstrap.css'/>
+      <link rel='stylesheet' href='./css/bootstrap.min.css'/>
+      <link rel='stylesheet' href='./css/bootstrap.scrollbar.css'/>
+      <link href='./css/metadata_view.css' rel='stylesheet' type='text/css'>
+      <!-- http://youngkang.me/hangul-webfont-showcase/#/fonts/Godo -->
+      <link href='./font/Godo.css' rel='stylesheet' type='text/css'>
+      <!-- http://youngkang.me/hangul-webfont-showcase/#/fonts/NanumBarunGothic -->
+      <link href='./font/NanumBarunGothic.css' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" type="text/css" href="index.css">
+      <script src="index.js"></script>
+      <script src='js/jquery-3.3.1.min.js'></script>
+      <script src='js/bootstrap.bundle.min.js'></script>
+      <style>
+         .container{
+         margin: auto;
+         }
+         canvas{
+         -moz-user-select: none;
+         -webkit-user-select: none;
+         -ms-user-select: none;
+         }
+         .sceneimgsheader{
+         float: left;
+         box-sizing: border-box;
+         margin: 0 2px;
+         }
+         .sceneimgsdiv{
+         overflow-y: auto;
+         overflow-x: hidden;
+         padding: 5px 0;
+         /* border: 1px solid rgb(119, 125, 129); */
+         box-sizing: border-box;
+         /* height: 800px; */
+         max-height: 800px;
+         /* background-color: white; */
+         color:rgb(119, 125, 129)
+         }
+         #loading{
+         opacity: 0.8;
+         position: absolute;
+         z-index: 1;
+         padding: 0;
+         margin: 0;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: black;
+         }
+         .loadingcenter{
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         color:white;
+         }
+         .mysearch{
+         margin: 0 auto;
+         display: flex;
+         justify-content: center; 
+         }
+         #btn-play{
+         visibility: hidden;
+         }
+      </style>
+   </head>
+   <body>
+      <header class="row main-header py-4" id="main-header">
+         <div class="col-lg-1 col-md-0"></div>
+         <div class="col-lg-6 col-md-12 text-center pt-2 mt-1">
+            <h1 id="header-title">Header</h1>
+         </div>
+         <div class="col-lg-3 col-md-12 text-center">
+            <img id="aiccrc-itrc-logo" src="./img/center_logo.png">
+         </div>
+         <div class="col-lg-2 col-md-0"></div>
+      </header>
+
+
+
+      <section class="container">
+
+         
+
+         <div class="small-container border border-primary">
+
+            <div class="row">
+                  <button type="button" class="btn btn-info btn-sm col-lg-2 col-md-2 col-sm-2" id="btn-home" onclick="homeButtonHandler()">Home</button>
+            </div>
+
+            <div id = "return-buttons-for-check-result" class="row">
+                  <button type="button" class="btn btn-info btn-sm col-lg-2 col-md-2 col-sm-2" id="btn-back-to-story-editor" onclick="backToEditorHandler()">Story Editor</button>
+                  <div class="col-lg-8 col-md-8 col-sm-8"></div>
+                  <button type="button" class="btn btn-info btn-sm col-lg-2 col-md-2 col-sm-2" id="btn-home-for-check-result" onclick="homeButtonHandlerForCheckResult()">Home</button>
+            </div>
+
+
+
+            <div id="video-story-plot-auto-generator" >
+               <h1>Video Story Plot Auto Generator</h1>
+
+               <div class="row input-box">
+                  <span class="input-label col-lg-4 col-md-4 col-sm-12">Synopsis:</span>
+                  <input class="input-text-area col-lg-8 col-md-8 col-sm-12" id="synopsis-value" type="text" name="" value="Person=Wife&Place=Bank&Action=Flight">
+                           
+               </div>
+
+               <div class="row input-box">
+                  <span class="input-label col-lg-4 col-md-4 col-sm-12">Narrative Structure:</span>
+                  <input class="input-text-area col-lg-8 col-md-8 col-sm-12" id="narrative-value" type="text" name="" value="1-2-3-5">
+                     
+                  
+               </div>
+               <div class="row">
+                  <button type="button" class="btn btn-primary col-lg-12 col-md-12 col-sm-12" id="btn-auto-generate" onclick="autoGenerateHandler()">
+                  Auto Generate</button>
+               </div>
+               
+               <div class="row">
+                  <button type="button" class="btn btn-secondary col-lg-12 col-md-12 col-sm-12" id="btn-story-edit" onclick="storyEditHandler()" disabled>Story Editor</button>
+               </div>
+               
+               <div id="story-plot" class="row border border-primary">
+                  <span>We don't have generated story plot</span>
+               </div>
+
+            </div>
+
+            
+            
+            <div class="row">
+                  <button type="button" class="btn btn-secondary col-lg-12 col-md-12 col-sm-12" id="btn-check-result" onclick="checkResultHandler()" disabled>Check Result</button>
+            </div>
+
+            <!--Hidden at the beginning-->
+            
+            <div id="video-shot-selector">
+               
+               <div id="search-query-div" class="row">
+                  <span class="col-lg-4 col-md-4 col-sm-12">
+                  Scene <span id="scene-id"></span> | Keyword to search a shot:
+                   </span>
+
+                  <input class="col-lg-6 col-md-4 col-sm-12" type="text" name="" value="Person=Wife&Action=Smile">
+
+                  <div class="col-lg-1 col-md-2 col-sm-12">
+                     <button class="btn btn-primary" type="button" id="btn-search" onclick="searchButtonHandler()">Search</button> 
+                  </div>
+
+                  <div class="col-lg-1 col-md-2 col-sm-12">
+                     <button class="btn btn-primary" type="button" id="btn-cancel" onclick="cancelButtonHandler()">Cancel</button>
+                  </div>
+               </div>
+            <!--Hidden at the beginning-->
+                <div class="row">
+                  <div id="selectable-shot-displayer" class="border border-primary col-lg-12 col-md-12 col-sm-12">
+                     <span>Empty</span>            
+                  </div>
+               </div>
+               
+            </div>
+            
+            <div class="row">
+               <div id="final-video" class="border border-primary col-lg-12 col-md-12 col-sm-12"><span>Placeholder Content</span></div>
+            </div>
+
+            <div class="row">
+               <div id="final-story-plot" class="border border-primary col-lg-12 col-md-12 col-sm-12"></div>
+            </div>
+
+            <!--Hidden at the beginning-->
+            <div class="row">
+               <div id="editable-story-plot">
+            </div>
+
+            </div>
+         
+         </div>
+        
+        
+      </section>
+
+
+
+
+      <footer class="row main-footer pt-4 pb-3">
+         <div class="col-12 text-center">
+            <h6 class="my-1">(22212) 인천광역시 남구 인하로 100 인하대학교 하이테크 201호 / 032-860-8811 / 032-873-8817</h6>
+            <h6 class="my-1">Copyright © 2019 - ITRC. All rights reserved. </h6>
+            <h6 class="my-1">본 영상의 저작권은 tvN에 귀속되어 있습니다. </h6>
+         </div>
+      </footer>
+      <div id="topbutton" class="topbutton"><a href="#main-header">▲ Top</a></div>
+   </body>
+</html>

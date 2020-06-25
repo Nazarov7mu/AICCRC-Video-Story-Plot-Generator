@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta content="utf-8" http-equiv="encoding">
+		<title>Story Plot Generator</title>
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<link rel='stylesheet' href='./css/bootstrap.css'/>
+		<link rel='stylesheet' href='./css/bootstrap.min.css'/>
+		<link rel='stylesheet' href='./css/bootstrap.scrollbar.css'/>
+		<script src="index.js"></script>
+	</head>
+	
+	<body>
+
+	<section class="container"> 
+		<div class="small-container border border-primary">
+
+			<div id="video-story-plot-auto-generator" >
+				<h1>Video Story Plot Auto Generator</h1>
+
+				<div class="row input-box">
+					<span class="input-label col-lg-4 col-md-4 col-sm-12">Synopsis:</span>
+					<input class="input-text-area col-lg-8 col-md-8 col-sm-12" id="synopsis-value" type="text" name="" value="Person=Wife&Place=Bank&Action=Flight">
+								
+				</div>
+
+				<div class="row input-box">
+					<span class="input-label col-lg-4 col-md-4 col-sm-12">Narrative Structure:</span>
+					<input class="input-text-area col-lg-8 col-md-8 col-sm-12" id="narrative-value" type="text" name="" value="1-2-3-5">
+						
+					
+				</div>
+				<div class="row">
+					<button type="button" class="btn btn-primary col-lg-12 col-md-12 col-sm-12" id="btn-auto-generate" onclick="autoGenerateHandler()">
+					Auto Generate</button>
+				</div>
+				
+				<div class="row">
+					<button type="button" class="btn btn-secondary col-lg-12 col-md-12 col-sm-12" id="btn-story-edit" onclick="storyEditHandler()" disabled>Story Editor</button>
+				</div>
+				
+				<div id="story-plot" class="row border border-primary">
+					<span>We don't have generated story plot</span>
+				</div>
+
+			</div>
+
+			
+			<div class="row">
+					<button type="button" class="btn btn-secondary col-lg-12 col-md-12 col-sm-12" id="btn-check-result" onclick="checkResultHandler()" disabled>Check Result</button>
+			</div>
+
+			<!--Hidden at the beginning-->
+			
+			<div id="video-shot-selector">
+				
+				<div id="search-query-div" class="row">
+					<span class="col-lg-4 col-md-4 col-sm-12">
+					Scene <span id="scene-id"></span> | Keyword to search a shot:
+				    </span>
+
+					<input class="col-lg-6 col-md-4 col-sm-12" type="text" name="" value="Person=Wife&Action=Smile">
+
+					<div class="col-lg-1 col-md-2 col-sm-12">
+						<button class="btn btn-primary" type="button" id="btn-search" onclick="searchButtonHandler()">Search</button> 
+					</div>
+
+					<div class="col-lg-1 col-md-2 col-sm-12">
+						<button class="btn btn-primary" type="button" id="btn-cancel" onclick="cancelButtonHandler()">Cancel</button>
+					</div>
+				</div>
+			<!--Hidden at the beginning-->
+			    <div class="row">
+					<div id="selectable-shot-displayer" class="border border-primary col-lg-12 col-md-12 col-sm-12">
+						<span>Empty</span>				
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				<div id="final-video" class="border border-primary col-lg-12 col-md-12 col-sm-12"><span>Placeholder Content</span></div>
+			</div>
+			<div class="row">
+				<div id="final-story-plot" class="border border-primary col-lg-12 col-md-12 col-sm-12"></div>
+			</div>
+
+
+			
+			<!--Hidden at the beginning-->
+			<div class="row">
+				<div id="editable-story-plot">
+			</div>
+
+			</div>
+			
+		</div>
+		
+	</section>
+
+	</body>
+</html>
